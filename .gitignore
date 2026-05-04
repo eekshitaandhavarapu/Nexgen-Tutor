@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Environment variables
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Streamlit secrets (local only — set via dashboard on cloud)
+.streamlit/secrets.toml
+
+# Data directories (rebuilt at runtime)
+chroma_store/
+logs/
+arena_data/
+
+# Report files (not needed for deployment)
+*.docx
+
+# Misc
+*.log

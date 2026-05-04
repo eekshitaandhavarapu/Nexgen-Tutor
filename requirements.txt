@@ -1,0 +1,30 @@
+streamlit>=1.30.0
+langchain>=0.2.0
+langchain-groq>=0.1.0
+langchain-community>=0.2.0
+langchain-huggingface>=0.0.3
+chromadb>=0.4.22
+pypdf>=3.17.0
+python-dotenv>=1.0.0
+rouge-score>=0.1.2
+nltk>=3.8.1
+plotly>=5.18.0
+pandas>=2.1.0
+tiktoken>=0.5.0
+sentence-transformers>=2.2.0
+numpy>=1.24.0
+groq>=0.4.0
+# URL ingest
+youtube-transcript-api>=1.0.0
+trafilatura>=1.8.0
+# Voice input
+audio-recorder-streamlit>=0.0.8
+SpeechRecognition>=3.10.0
+# Media ingest
+python-pptx>=0.6.21
+# Code editor
+streamlit-ace>=0.1.1
+# Text-to-speech
+gTTS>=2.3.0
+# Streamlit Cloud: ChromaDB needs newer SQLite than the cloud provides
+pysqlite3-binary; sys_platform == "linux"
