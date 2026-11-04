@@ -28,9 +28,9 @@ DEFAULT_TOP_K = int(os.getenv("TOP_K", "5"))
 DEFAULT_SCORE_THRESHOLD = float(os.getenv("SCORE_THRESHOLD", "0.25"))
 
 # ── LLM defaults (Groq) ─────────────────────────────────────────────────────
-# Configurable: "llama3-70b-8192" for depth, "llama3-8b-8192" for speed
-DEFAULT_MODEL = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
-FAST_MODEL = os.getenv("GROQ_FAST_MODEL", "llama-3.1-8b-instant")
+# Override these defaults with GROQ_MODEL and GROQ_FAST_MODEL if needed.
+DEFAULT_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
+FAST_MODEL = os.getenv("GROQ_FAST_MODEL", "openai/gpt-oss-20b")
 DEFAULT_TEMPERATURE = float(os.getenv("TEMPERATURE", "0.3"))
 
 # ── Embedding model (local HuggingFace — no API key required) ────────────────
@@ -41,12 +41,12 @@ EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "all-MiniLM-L6-v2")
 CHROMA_COLLECTION = os.getenv("CHROMA_COLLECTION", "nexgen_tutor")
 
 # ── Available Groq models (shown in UI dropdown) ─────────────────────────────
-AVAILABLE_MODELS = [
-    "llama-3.3-70b-versatile",
-    "llama-3.1-8b-instant",
-    "qwen/qwen3-32b",
-    "meta-llama/llama-4-scout-17b-16e-instruct",
-]
+AVAILABLE_MODELS = list(dict.fromkeys([
+    DEFAULT_MODEL,
+    FAST_MODEL,
+    "openai/gpt-oss-120b",
+    "openai/gpt-oss-20b",
+]))
 
 # ── Prompt Templates ─────────────────────────────────────────────────────────
 

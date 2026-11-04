@@ -39,7 +39,7 @@ The **NextGen Tutor AI** is a production-inspired full-stack AI application desi
 
 The project combines:
 - ⚛️ **Streamlit Frontend:** A reactive, multi-tab educational dashboard with voice input, audio playback, and visual diagram renderers.
-- 🧠 **Groq LLM Engine:** Ultra-low latency inference using `llama-3.3-70b-versatile` (deep reasoning) and `llama-3.1-8b-instant` (fast tasks).
+- 🧠 **Groq LLM Engine:** Ultra-low latency inference using `openai/gpt-oss-120b` (deep reasoning) and `openai/gpt-oss-20b` (fast tasks).
 - 🔍 **RAG Pipeline & ChromaDB:** Semantic document retrieval with local HuggingFace embeddings (`all-MiniLM-L6-v2`) and strict citation grounding.
 - 📝 **Adaptive Micro-Quizzes:** Auto-generated MCQs and short-answer questions with rubric-based grading, partial credit, and Socratic hints.
 - ⚔️ **Coding Battle Arena:** In-browser IDE sandbox with test-case validation, AI code coaching, and timed contests.
@@ -180,7 +180,7 @@ flowchart TD
 | Category | Technology | Purpose |
 | :--- | :--- | :--- |
 | **Frontend** | Streamlit 1.30+ | Reactive UI, tabs, session state management |
-| **LLM Engine** | Groq API (`llama-3.3-70b-versatile`, `llama-3.1-8b-instant`) | Fast inference for reasoning, quiz generation, grading |
+| **LLM Engine** | Groq API (`openai/gpt-oss-120b`, `openai/gpt-oss-20b`) | Fast inference for reasoning, quiz generation, grading |
 | **Embeddings** | HuggingFace (`all-MiniLM-L6-v2`) | Local 384-dim dense vector generation (zero cost) |
 | **Vector DB** | ChromaDB | Persistent local semantic vector storage (`./chroma_store`) |
 | **Orchestration** | LangChain | Document loaders, text splitters, prompt templates |
@@ -293,8 +293,8 @@ You can create an optional `.env` file in the root folder:
 ```env
 # Groq API Configuration
 GROQ_API_KEY=gsk_your_key_here
-GROQ_MODEL=llama-3.3-70b-versatile
-GROQ_FAST_MODEL=llama-3.1-8b-instant
+GROQ_MODEL=openai/gpt-oss-120b
+GROQ_FAST_MODEL=openai/gpt-oss-20b
 TEMPERATURE=0.3
 
 # RAG Parameters
@@ -317,3 +317,23 @@ This project is open source and available under the [MIT License](LICENSE).
 <div align="center">
   <sub>Built with ❤️ by <a href="https://github.com/eekshitaandhavarapu">Eekshita Andhavarapu</a></sub>
 </div>
+
+### Chat error: model does not exist
+
+The previous Llama defaults and Qwen/Scout dropdown options were retired for
+Groq free/developer accounts in July–August 2026. The defaults now use
+`openai/gpt-oss-120b` for tutoring and `openai/gpt-oss-20b` for fast tasks.
+These models still use your **Groq API key**.
+
+If you have an existing `.env` or deployment environment, update or remove
+old `GROQ_MODEL` and `GROQ_FAST_MODEL` overrides:
+
+```dotenv
+GROQ_MODEL=openai/gpt-oss-120b
+GROQ_FAST_MODEL=openai/gpt-oss-20b
+```
+
+Restart/reboot the Streamlit app, then select `openai/gpt-oss-120b` in Setup.
+If access is still denied, check your Groq organization's model permissions.
+See [Groq model deprecations](https://console.groq.com/docs/deprecations)
+and [currently supported models](https://console.groq.com/docs/models).
